@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+    <h1>Change voting</h1>
+</div>
+
+<% gamesList.forEach(function(game) { %>
+    <form action="/changeEnabled" method="post">
+        <div class="container">
+            <input type="checkbox" name="checkbox" value="<%=game.name%>" onChange="this.form.submit()" <%if (game.isEnabled) {%> checked <%}%>>
+            <input type="hidden" name="checkbox" value="<%=game.name%>">
+            <label for="<%=game.name%>"><%=game.name%></label>
+        </div>
+    </form>
+<% }); %>
+
+<div class="container">
+<a class="btn btn-dark btn-lg" href="/menu" role="button">Main menu</a>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,45 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+    <h1>Menu</h1>
+</div>
+
+<div class="container mt-5">
+    <p>Logged in as: <%= User %></p>
+</div>
+
+<div class="container menu-button">
+    <a class="btn btn-dark btn-lg" href="/vote" role="button">Vote</a>
+</div>
+
+<div class="container menu-button">
+    <a class="btn btn-dark btn-lg" href="/results" role="button">Results</a>
+</div>
+
+<div class="container menu-button">
+    <a class="btn btn-dark btn-lg" href="/logout" role="button">Log out</a>
+</div>
+
+<% if (isAdmin) { %>
+    <form class="voting" action="/openVoting" method="post">
+        <div class="container menu-button">
+            <button class="btn btn-dark btn-lg" type="submit" name="openVoting">Open voting</button>
+        </div>
+    </form>
+
+    <form class="voting" action="/closeVoting" method="post">
+        <div class="container menu-button">
+            <button class="btn btn-dark btn-lg" type="submit" name="closeVoting">Close voting</button>
+        </div>
+    </form>
+
+    <div class="container menu-button">
+        <a class="btn btn-dark btn-lg" href="/votingSelection" role="button">Change voting selections</a>
+    </div>
+<% } %>
+
+<div class="container">
+    <%= response %>
+</div>
+
+<%- include('partials/footer') %>
